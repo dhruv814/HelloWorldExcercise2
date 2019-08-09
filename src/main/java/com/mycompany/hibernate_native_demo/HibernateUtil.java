@@ -14,7 +14,12 @@ public class HibernateUtil {
 
     private static StandardServiceRegistry registry;
     private static SessionFactory sessionFactory;
-
+    final static String MY_DRIVER="org.postgresql.Driver";
+    final static String MY_URL="jdbc:postgresql://localhost:5432/jdbcTemplatedb?useSSL=false";
+    final static String MY_USER="postgres";
+    final static String MY_PASSWORD="root";
+    final static String MY_HBM2DDL="validate";
+    
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
@@ -22,11 +27,11 @@ public class HibernateUtil {
 
                 //Configuration properties
                 Map<String, Object> settings = new HashMap<>();
-                settings.put(Environment.DRIVER, "org.postgresql.Driver");
-                settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/jdbcTemplatedb?useSSL=false");
-                settings.put(Environment.USER, "postgres");
-                settings.put(Environment.PASS, "root");
-                settings.put(Environment.HBM2DDL_AUTO, "validate");
+                settings.put(Environment.DRIVER, MY_DRIVER);
+                settings.put(Environment.URL, MY_URL);
+                settings.put(Environment.USER, MY_USER);
+                settings.put(Environment.PASS, MY_PASSWORD);
+                settings.put(Environment.HBM2DDL_AUTO, MY_HBM2DDL);
                 settings.put(Environment.SHOW_SQL, true);
 
                 registryBuilder.applySettings(settings);
