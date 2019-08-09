@@ -3,6 +3,7 @@ package com.mycompany.hibernate_native_demo;
 import java.util.List;
 import java.util.Scanner;
 import org.hibernate.Session;
+import static org.hibernate.bytecode.BytecodeLogger.LOGGER;
 
 /**
  *
@@ -42,10 +43,10 @@ public class AppMain {
                     "SELECT C FROM HelloWorld C").list();
             session.getTransaction().commit();
             employees.forEach((h) -> {
-                System.out.println(h);
+                LOGGER.info(h);
             });
         } catch (Exception e) {
-            System.out.println(e);
+            LOGGER.info(e);
         }
 
     }
@@ -61,9 +62,9 @@ public class AppMain {
 
             session.save(helloWorld);
             session.getTransaction().commit();
-            System.out.println("Message Added!");
+            LOGGER.info("Message Added!");
         }catch(Exception e){
-            System.out.println(e);
+            LOGGER.info(e);
         }
         
     }
